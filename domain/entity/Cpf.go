@@ -13,6 +13,16 @@ var (
 	CNPJRegexp = regexp.MustCompile(`^\d{2}\.?\d{3}\.?\d{3}\/?(:?\d{3}[1-9]|\d{2}[1-9]\d|\d[1-9]\d{2}|[1-9]\d{3})-?\d{2}$`)
 )
 
+type Cpf string
+
+func NewCPF(s string) (Cpf, error) {
+	match, _ := regexp.MatchString(`^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$`, s)
+	if match {
+		return Cpf(s), nil
+	}
+	return Cpf(s), ErrInvalidValue
+}
+
 // IsCPF verifies if the given string is a valid CPF document.
 func IsCPF(doc string) bool {
 

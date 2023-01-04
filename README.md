@@ -11,7 +11,18 @@ mkdir entity
 
 
 ## DDD
+[-] You must not place an order with a valid CPF/SSN
+[-] You must place an order with 3 items (price, quantity, description)
+[-] Must place an order with discount coupon
 
-[] Nao deve fazer um pedido com cpf envalido
-[] Deve fazer um pedido com 3 itens (preco, quantidade, descricao)
-[] Deve fazer um pedido com cupom de desconto
+## Dependencies
+```ssh
+go get regexp
+go get strconv
+go get github.com/stretchr/testify
+```
+
+
+## References
+https://github1s.com/eyazici90/go-ddd/blob/HEAD/internal/domain/order_test.go
+https://github1s.com/klassmann/cpfcnpj/blob/HEAD/cpf.go#L27
