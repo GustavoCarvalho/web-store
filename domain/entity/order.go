@@ -1,5 +1,7 @@
 package entity
 
+import "time"
+
 type Order struct {
 	Cpf    Cpf
 	Items  []Item
@@ -19,6 +21,9 @@ func OrderGetTotal(o *Order) float64 {
 	var sum float64
 	for i := 0; i < len(o.Items); i++ {
 		sum = sum + o.Items[i].Price
+	}
+	if CouponIsExpired(o.Coupon, time.Now()) {
+		return sum
 	}
 	return sum - sum*(float64(o.Coupon.Value)/100)
 }

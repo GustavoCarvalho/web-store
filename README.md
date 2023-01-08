@@ -14,7 +14,7 @@ mkdir entity
 [x] You must place an order with 3 items (price, quantity, description)
 [x] Must place an order with discount coupon
 [x] Create valid and expired coupons
-[-] Must not apply an expired discount coupon
+[x] Must not apply an expired discount coupon
 [-] You must calculate the freight, considering the dimensions and weight of the items
 [-] Must return the minimum value of 10 if the accumulated value is lower
 
