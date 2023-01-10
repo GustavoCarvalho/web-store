@@ -135,6 +135,32 @@ func TestNewOrderWithProductNotApplyExpiredCoupon(t *testing.T) {
 	assert.Equal(t, total, float64(2030))
 }
 
+func TestNewOrderWithFreight(t *testing.T) {
+	product1 := Product{
+		Id:          "1",
+		Name:        "Guitarra",
+		Description: "Guitarra elétrica",
+		Dimension: Dimension{
+			Height: 100,
+			Width:  30,
+			Lenght: 10,
+			Weight: 3,
+		},
+	}
+	i1 := Item{
+		Id:       "idItem1",
+		Price:    2000,
+		Quantity: 2,
+		Product:  product1,
+	}
+	items := []Item{i1}
+	o, _ := fakeOrder(items)
+	OrderPartial := OrderGetTotal(o)
+	OrderFreight := FreightGetTotal(items)
+	OrderTotal := OrderPartial + OrderFreight
+	assert.Equal(t, OrderTotal, float64(2060))
+}
+
 func fakeOrder(items []Item) (*Order, error) {
 	cpfString := "099.075.865-60"
 	cpf, _ := NewCPF(cpfString)
