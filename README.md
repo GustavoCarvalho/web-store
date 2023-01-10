@@ -15,7 +15,7 @@ mkdir entity
 [x] Must place an order with discount coupon
 [x] Create valid and expired coupons
 [x] Must not apply an expired discount coupon
-[-] You must calculate the freight, considering the dimensions and weight of the items
+[-] You must calculate the freight, considering the dimensions and weight of the items: volume*1000*(density/100)
 [-] Must return the minimum value of 10 if the accumulated value is lower
 
 ## Dependencies
