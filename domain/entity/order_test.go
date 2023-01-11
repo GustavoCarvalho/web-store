@@ -160,6 +160,31 @@ func TestNewOrderWithFreight(t *testing.T) {
 	OrderTotal := OrderPartial + OrderFreight
 	assert.Equal(t, OrderTotal, float64(2060))
 }
+func TestNewOrderWithFreightMinimum(t *testing.T) {
+	product1 := Product{
+		Id:          "1",
+		Name:        "Guitarra",
+		Description: "Guitarra elétrica",
+		Dimension: Dimension{
+			Height: 1,
+			Width:  1,
+			Lenght: 1,
+			Weight: 0.1,
+		},
+	}
+	i1 := Item{
+		Id:       "idItem1",
+		Price:    2000,
+		Quantity: 1,
+		Product:  product1,
+	}
+	items := []Item{i1}
+	o, _ := fakeOrder(items)
+	OrderPartial := OrderGetTotal(o)
+	OrderFreight := FreightGetTotal(items)
+	OrderTotal := OrderPartial + OrderFreight
+	assert.Equal(t, OrderTotal, float64(2010))
+}
 
 func fakeOrder(items []Item) (*Order, error) {
 	cpfString := "099.075.865-60"
