@@ -17,6 +17,7 @@ mkdir entity
 - [x] Must not apply an expired discount coupon
 - [x] You must calculate the freight, considering the dimensions and weight of the items: volume*1000*(density/100)
 - [x] Must return the minimum value of 10 if the accumulated value is lower
+- [x] The order code is formed by AAAAPPPPPPPP where AAAA represents the year and PPPPPPPP represents a sequence of the order Implement a decoupled persistence mechanism using a database
 
 ## Dependencies
 ```ssh
@@ -24,11 +25,6 @@ go get regexp
 go get strconv
 go get github.com/stretchr/testify
 ```
-
-## TDD
-- Nao deve escrever nenhuma linha se codigo sem que antes exista um codigo de falha.
-- Voce nao deve escrever mais do que necessario para evidenciar uma fallha.
-- Voce nao deve escrever mais codigo do que o suficiente para fazer o codigo passar.
 
 ## References
 https://go.dev/ref/spec

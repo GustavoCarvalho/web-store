@@ -3,16 +3,21 @@ package entity
 import "time"
 
 type Order struct {
-	Cpf    Cpf
-	Items  []Item
-	Coupon Coupon
+	Cpf       Cpf
+	Items     []Item
+	Coupon    Coupon
+	IssueDate time.Time
+	OrderCode string
+	Sequence  int64
 }
 
-func NewOrder(cpf Cpf, items []Item, coupom Coupon) (*Order, error) {
+func NewOrder(cpf Cpf, items []Item, coupom Coupon, issueDate time.Time, sequence int64) (*Order, error) {
 	o := Order{
-		Cpf:    cpf,
-		Items:  items,
-		Coupon: coupom,
+		Cpf:       cpf,
+		Items:     items,
+		Coupon:    coupom,
+		IssueDate: issueDate,
+		OrderCode: NewOrderCode(issueDate, sequence).Value,
 	}
 	return &o, nil
 }
